@@ -1,0 +1,3 @@
+logsPath=D:\Ocio\Codigo\Java\LoLTips\src\data\logs
+rememberUsername=true
+lastLoggedUsername=CymruSkik
