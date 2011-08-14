@@ -129,7 +129,7 @@ public class Sys {
 	}
 	
 	private void readParsedFiles() {
-		parsedFiles = new HashSet<String>() {};
+		parsedFiles = new HashSet<String>();
 		FileReader fr = null;
 		BufferedReader br = null;
 		
@@ -167,6 +167,7 @@ class LogFilter implements FilenameFilter {
 	
 	@Override
 	public boolean accept(File dir, String name) {
+		System.out.println(name);
 		return name.endsWith(".log") && !parsedFiles.contains(name);
 	}
 }

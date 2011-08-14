@@ -76,5 +76,9 @@ public enum Champion {
 	VOIDWALKER,
 	WOLFMAN,
 	XENZHAO,
-	YETI,
+	YETI;
+	
+	public static Champion getChampionByName() {
+		return URGOT;
+	}
 }

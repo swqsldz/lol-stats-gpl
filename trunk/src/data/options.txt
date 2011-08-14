@@ -1,3 +1,3 @@
-logsPath=D:\Ocio\Codigo\Java\LoLTips\src\data\logs
+logsPath=D:/Ocio/Codigo/Java/lol-stats-gpl/src/data/logs
 rememberUsername=true
 lastLoggedUsername=CymruSkik

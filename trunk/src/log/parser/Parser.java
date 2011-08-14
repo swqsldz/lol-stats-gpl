@@ -65,7 +65,11 @@ public class Parser {
 				splittedLine = line.split(" = ");
 				
 				if (splittedLine[0].equals("gameId") || splittedLine[0].equals("id"))
-					game.setId(Long.parseLong(splittedLine[1]));
+					try {
+						game.setId(Long.parseLong(splittedLine[1]));
+					} catch(NumberFormatException e) {
+						game.setId(-1);
+					}
 				else if (splittedLine[0].equals("gameType"))
 					game.setGameType(ParserUtils.parseGameType(splittedLine[1]));
 				else if (splittedLine[0].equals("difficulty"))
