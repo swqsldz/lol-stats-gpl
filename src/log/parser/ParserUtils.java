@@ -94,6 +94,7 @@ public class ParserUtils {
 		Champion[] champions = Champion.values();
 		Champion champion = null;
 		String championNameUC = championName.replace("\"", "").toUpperCase();
+		System.out.println(championName);
 		for (int iChampion = 0; iChampion < champions.length && champion == null; iChampion++) {
 			if (champions[iChampion].toString().equals(championNameUC))
 				champion = champions[iChampion];
@@ -135,7 +136,11 @@ public class ParserUtils {
 			player.setBot(Boolean.parseBoolean(br.readLine().trim().split(" = ")[1]));	// botPlayer
 			player.setElo(Integer.parseInt(br.readLine().trim().split(" = ")[1]));	// elo
 			player.setEloChange(Integer.parseInt(br.readLine().trim().split(" = ")[1]));	// eloChange
-			player.setGameId(Integer.parseInt(br.readLine().trim().split(" = ")[1]));	// gameId
+			try {
+				player.setGameId(Integer.parseInt(br.readLine().trim().split(" = ")[1]));	// gameId
+			} catch(NumberFormatException e) {
+				player.setGameId(-1);
+			}
 			br.readLine();	// gameItems
 			br.readLine();	// inChat
 			player.setMe(Boolean.parseBoolean(br.readLine().trim().split(" = ")[1]));	// isMe
@@ -187,7 +192,11 @@ public class ParserUtils {
 			br.readLine();	// [n] (com.riotgames.platform.gameclient.domain::RawStatDTO)#m
 			br.readLine();	// displayName
 			statistic = br.readLine().trim().split(" = ")[1].replace("\"", "");	//statTypeName
-			value = Integer.parseInt(br.readLine().trim().split(" = ")[1]);	// value
+			try {
+				value = Integer.parseInt(br.readLine().trim().split(" = ")[1]);	// value
+			} catch(NumberFormatException e) {
+				value = -1;
+			}
 			
 			if (statistic.equals("TOTAL_DAMAGE_TAKEN"))
 				player.setDamageTaken(value);
