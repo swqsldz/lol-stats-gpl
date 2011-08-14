@@ -92,6 +92,9 @@ public class Summoner implements Serializable {
 	
 	public int getSummonerIcon() {return summonerIcon;}
 	public void setSummonerIcon(int summonerIcon) {this.summonerIcon = summonerIcon;}
+	
+	public int getLevel() {return level;}
+	public void setLevel(int level) {this.level = level;}
 }
 
 class Statistics implements Serializable {
@@ -143,7 +146,7 @@ class Statistics implements Serializable {
 				", Leaves: " + leaves;
 	}
 	
-	/* Accesoras y modificadoras */
+	/* Accesoras y modificadoras */	
 	public int getElo() {return elo;}
 	public void setElo(int elo) {this.elo = elo;}
 	

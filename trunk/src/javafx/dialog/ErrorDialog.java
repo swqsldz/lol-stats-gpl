@@ -14,8 +14,11 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-// Añadir, si es posible, que se cierre el menu pulsando ENTER
+// TODO Añadir, si es posible, que se cierre el menu pulsando ENTER
 public class ErrorDialog {
+	
+	private final static String SEPARATOR = System.getProperty("file.separator");
+	private final static String BACKGROUND_IMG_PATH = "src" + SEPARATOR + "resources" + SEPARATOR + "error_menu.png";
 	
 	private static Image backgroundErrorImg;
 	
@@ -60,7 +63,7 @@ public class ErrorDialog {
 	
 	public static Image getBackgroundErrorImg() {
         if (backgroundErrorImg == null)
-            backgroundErrorImg = new Image("src/resources/error_menu.png");
+            backgroundErrorImg = new Image(BACKGROUND_IMG_PATH);
         return backgroundErrorImg;
     }
 }
