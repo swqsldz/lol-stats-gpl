@@ -10,7 +10,8 @@ import system.Sys;
 
 public class Button extends ImageView {
     
-    private static final String IMAGES_PATH = "src/resources/buttons/";
+	private final static String SEPARATOR = System.getProperty("file.separator");
+    private static final String IMAGES_PATH = "src" + SEPARATOR + "resources" + SEPARATOR + "buttons/";
     
     private Image normalImg;
     private Image hoverImg;
@@ -38,10 +39,7 @@ public class Button extends ImageView {
         setOnMouseReleased(new EventHandler() {
 			@Override
             public void handle(Event event) {
-                if (((ImageView)((MouseEvent)event).getSource()).isHover())
-                    ((ImageView)((MouseEvent)event).getSource()).setImage(hoverImg);
-                else
-                    ((ImageView)((MouseEvent)event).getSource()).setImage(normalImg);
+				((ImageView)((MouseEvent)event).getSource()).setImage(normalImg);
             }
         });
         setOnMousePressed(new EventHandler() {

@@ -34,7 +34,7 @@ public class Main extends Application {
         stage.setTitle("LoL Tips");
         stage.initStyle(StageStyle.UNDECORATED);
 		
-        stage.setScene(LoginScene.getInstance());
+        stage.setScene(LoginScene.getLoginScene());
         stage.setVisible(true);
     }
 	
@@ -44,10 +44,10 @@ public class Main extends Application {
 		
 		switch(newSceneType) {
 			case LOGIN: 
-				newScene = LoginScene.getInstance();
+				newScene = LoginScene.getLoginScene();
 				break;
 			case MAIN:
-				newScene = MainScene.getInstance();
+				newScene = MainScene.getMainScene();
 				break;
 		}
 		

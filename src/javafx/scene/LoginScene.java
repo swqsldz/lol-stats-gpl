@@ -20,13 +20,14 @@ import options.Options;
 
 public class LoginScene {
 	
-	private final static String BACKGROUND_IMG_PATH = "src/resources/background_login.jpg";
-	
-	private static Scene instance;
+	private final static String SEPARATOR = System.getProperty("file.separator");
+	private final static String BACKGROUND_IMG_PATH = "src" + SEPARATOR + "resources" + SEPARATOR + "background_login.jpg";
 	
 	private static Image backgroundImg;
 	
-	private static Scene getLoginScene() {
+	
+	
+	public static Scene getLoginScene() {
 		Group root = new Group();
 		Scene scene = new Scene(root, 1024, 783);
         DragStageEventHandler eventHandler = new DragStageEventHandler(Main.getStage());
@@ -37,12 +38,6 @@ public class LoginScene {
         root.getChildren().add(getLoginMenu());
 		
 		return scene;
-	}
-	
-	public static Scene getInstance() {
-		if (instance == null)
-			instance = getLoginScene();
-		return instance;
 	}
 	
 	private static Image getBackgroundImg() {
