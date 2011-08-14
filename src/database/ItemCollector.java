@@ -20,12 +20,18 @@ import org.htmlparser.util.ParserException;
 import org.htmlparser.util.SimpleNodeIterator;
 
 public class ItemCollector {
+	
+	private final static String SEPARATOR = System.getProperty("file.separator");
+	private static final String ITEMS_URL = "http://www.leagueoflegends.com/items";
+	private static final String ITEM_IMAGES_PATH = "src" + SEPARATOR + "resources" + SEPARATOR + "items" + SEPARATOR;
+	private static final String ITEM_XML_FILE = "src" + SEPARATOR + "data" + SEPARATOR + "items" + SEPARATOR + "items.xml";
+	
 	public static void main(String[] args) {
 		HashMap<Integer, Item> items = new HashMap<Integer, Item>();
 		Item item;
 		
 		try {
-			Parser parser = new Parser("http://www.leagueoflegends.com/items");
+			Parser parser = new Parser(ITEMS_URL);
 			NodeList nodelist = parser.parse(null);
 			
 			// Se extraen los nodos de los objetos
@@ -38,9 +44,9 @@ public class ItemCollector {
 				item = new Item();
 				
 				// Se extrae el identificador y la imagen del objeto				
-				parseItemId(item, node.getChildren().elementAt(1)
-						   			  .getChildren().elementAt(1)
-						   			  .getChildren().elementAt(1));
+				parseItemIcon(item, node.getChildren().elementAt(1)
+										.getChildren().elementAt(1)
+										.getChildren().elementAt(1));
 				// Se extrae el nombre, la descripción y los materiales
 				parseItemInfo(item, node.getChildren().elementAt(3));
 				// Se extraen los precios del objeto
@@ -62,12 +68,12 @@ public class ItemCollector {
 			Iterator<Item> itemIt = items.values().iterator();
 			while (itemIt.hasNext()) {
 				Item item = itemIt.next();
-				URL imgURL = new URL("http://eu.leagueoflegends.com/sites/default/files/game_data/1.0.0.118/content/item/" + item.getItemId() + ".gif");
+				URL imgURL = new URL(item.getImgURL());
 				URLConnection urlCon = imgURL.openConnection();
 				
 				InputStream is = urlCon.getInputStream();
 				
-				FileOutputStream fos = new FileOutputStream("data/items/img/" + item.getItemId() + ".gif");
+				FileOutputStream fos = new FileOutputStream(ITEM_IMAGES_PATH + item.getItemId() + ".gif");
 				
 				byte[] buffer = new byte[1000];
 				
@@ -89,7 +95,7 @@ public class ItemCollector {
 		PrintWriter pw = null;
 		
 		try {
-			file = new FileWriter("data/items/items.xml");
+			file = new FileWriter(ITEM_XML_FILE);
 			pw = new PrintWriter(file);
 			
 			pw.println("<items>");
@@ -138,7 +144,8 @@ public class ItemCollector {
 										   .getText()));
 	}
 
-	private static void parseItemId(Item item, Node node) {
+	private static void parseItemIcon(Item item, Node node) {
+		item.setImgURL(getImgURL(node.getText()));
 		item.setItemId(getItemId(node.getText()));		
 	}
 
@@ -180,6 +187,11 @@ public class ItemCollector {
 		return itemList;
 	}
 
+	private static String getImgURL(String imgURL) {
+		String[] splittedImgURL = imgURL.split("\"");
+		return splittedImgURL[1];
+	}
+	
 	private static int getItemId(String imgURL) {
 		String[] splittedImgURL = imgURL.split("/");
 		return Integer.parseInt(splittedImgURL[splittedImgURL.length - 1].substring(0,4));
