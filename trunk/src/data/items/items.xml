@@ -845,7 +845,7 @@
 		<id>3152</id>
 		<name>Will of the Ancients</name>
 		<img>3152.gif</img>
-		<description>+50 Ability Power UNIQUE Aura: Gives nearby allied champions +30 Ability Power and 25% spell vamp.</description>
+		<description>+50 Ability Power UNIQUE Aura: Gives nearby allied champions +30 Ability Power and 25% Spell Vamp</description>
 		<price>465</price>
 		<totalPrice>1665</totalPrice>
 		<builtFrom>
@@ -902,7 +902,7 @@
 		<id>3145</id>
 		<name>Hextech Revolver</name>
 		<img>3145.gif</img>
-		<description>+40 Ability Power  UNIQUE Passive: +20% Spell Vamp</description>
+		<description>+40 Ability Power  UNIQUE Passive: +15% Spell Vamp</description>
 		<price>330</price>
 		<totalPrice>765</totalPrice>
 		<builtFrom>
@@ -931,7 +931,7 @@
 		<id>3140</id>
 		<name>Quicksilver Sash</name>
 		<img>3140.gif</img>
-		<description>+56 Magic Resistance Active: Removes all debuffs from your character. 105 second cooldown.</description>
+		<description>+56 Magic Resistance Active: Removes all debuffs from your character. 90 second cooldown.</description>
 		<price>700</price>
 		<totalPrice>1440</totalPrice>
 		<builtFrom>
@@ -1052,8 +1052,8 @@
 		<name>Eleisa's Miracle</name>
 		<img>3173.gif</img>
 		<description>+25 Health Regen per 5 sec +20 Mana Regen per 5 sec +25 Tenacity (Tenacity reduces the duration of stuns, slows, taunts, fears, silences, blinds and immobilizes.  Tenacity effects do not stack)</description>
-		<price>400</price>
-		<totalPrice>1200</totalPrice>
+		<price>500</price>
+		<totalPrice>1300</totalPrice>
 		<builtFrom>
 			<itemId>3096</itemId>
 		</builtFrom>
@@ -1092,7 +1092,7 @@
 		<id>3096</id>
 		<name>Philosopher's Stone</name>
 		<img>3096.gif</img>
-		<description>+22.5 Health Regen per 5 sec +10 Mana Regen per 5 sec Passive: Gain an additional 5 Gold every 10 seconds.</description>
+		<description>+18 Health Regen per 5 sec +8 Mana Regen per 5 sec UNIQUE Passive: Gain an additional 5 Gold every 10 seconds.</description>
 		<price>185</price>
 		<totalPrice>800</totalPrice>
 		<builtFrom>
@@ -1139,7 +1139,7 @@
 		<id>3098</id>
 		<name>Kage's Lucky Pick</name>
 		<img>3098.gif</img>
-		<description>+25 Ability Power Passive: Gain an additional 5 Gold every 10 seconds.</description>
+		<description>+25 Ability Power UNIQUE Passive: Gain an additional 5 Gold every 10 seconds.</description>
 		<price>330</price>
 		<totalPrice>765</totalPrice>
 		<builtFrom>
@@ -1182,7 +1182,7 @@
 		<id>3102</id>
 		<name>Banshee's Veil</name>
 		<img>3102.gif</img>
-		<description>+375 Health +375 Mana +50 Magic Resist UNIQUE Passive: Blocks one negative spell every 45 seconds.</description>
+		<description>+375 Health +375 Mana +50 Magic Resist UNIQUE Passive: Blocks one enemy ability every 45 seconds.</description>
 		<price>650</price>
 		<totalPrice>2715</totalPrice>
 		<builtFrom>
@@ -1196,7 +1196,7 @@
 		<id>3089</id>
 		<name>Rabadon's Deathcap</name>
 		<img>3089.gif</img>
-		<description>+155 Ability Power UNIQUE Passive: Increases Ability Power by 30%</description>
+		<description>+140 Ability Power UNIQUE Passive: Increases Ability Power by 30%</description>
 		<price>1140</price>
 		<totalPrice>3600</totalPrice>
 		<builtFrom>
@@ -1240,7 +1240,7 @@
 		<id>3093</id>
 		<name>Avarice Blade</name>
 		<img>3093.gif</img>
-		<description>+12% Critical Strike Passive: Gain an additional 5 Gold every 10 seconds.</description>
+		<description>+12% Critical Strike UNIQUE Passive: Gain an additional 5 Gold every 10 seconds.</description>
 		<price>350</price>
 		<totalPrice>750</totalPrice>
 		<builtFrom>
@@ -1494,7 +1494,7 @@
 		<id>3132</id>
 		<name>Heart of Gold</name>
 		<img>3132.gif</img>
-		<description>+250 Health Passive: Generates 5 Gold every 10 seconds.</description>
+		<description>+250 Health UNIQUE Passive: Generates 5 Gold every 10 seconds.</description>
 		<price>350</price>
 		<totalPrice>825</totalPrice>
 		<builtFrom>

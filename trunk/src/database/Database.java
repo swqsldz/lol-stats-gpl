@@ -23,6 +23,7 @@ import log.ds.Summoner;
 import log.ds.Spell;
 import log.ds.game.Game;
 
+// TODO: Leer los logs con GSON (http://code.google.com/p/google-gson/) si es posible
 public class Database {
 	
 	/** Ruta al fichero XML con la información de los objetos */

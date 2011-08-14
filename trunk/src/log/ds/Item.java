@@ -28,6 +28,9 @@ public class Item {
 	/** Lista de objetos que se pueden construir con él */
 	private ArrayList<Integer> buildsInto;
 	
+	/** URL de la imagen del objeto */
+	private String imgURL;
+	
 	public Item() {
 		itemId = -1;
 		image = null;
@@ -37,6 +40,7 @@ public class Item {
 		totalPrice = -1;
 		builtFrom = null;
 		buildsInto = null;
+		imgURL = null;
 	}
 
 	public int getItemId() {return itemId;}
@@ -61,6 +65,8 @@ public class Item {
 	public void setBuiltFrom(ArrayList<Integer> builtFrom) {this.builtFrom = builtFrom;}
 
 	public ArrayList<Integer> getBuildsInto() {return buildsInto;}
-	public void setBuildsInto(ArrayList<Integer> buildsInto) {this.buildsInto = buildsInto;
-	}
+	public void setBuildsInto(ArrayList<Integer> buildsInto) {this.buildsInto = buildsInto;}
+	
+	public String getImgURL() {return imgURL;}
+	public void setImgURL(String imgURL) {this.imgURL = imgURL;}
 }
