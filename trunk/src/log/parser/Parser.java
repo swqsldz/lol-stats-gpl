@@ -10,8 +10,6 @@ import log.ds.SummonerStats;
 import log.ds.game.Game;
 
 public class Parser {
-
-	private final static String SEPARATOR = System.getProperty("file.separator");
 	
 	public Parser() {}
 	
@@ -28,11 +26,8 @@ public class Parser {
 				i++;
 				if (isGame(line)) {
 					Game game = parseMatch(br);
-					// Se insertan/actualizan los juegos
-					if (games.containsKey(game.getId()))
-						games.get(game.getId()).merge(game);
-					else
-						games.put(game.getId(), game);
+					// Se insertan los juegos
+					games.put(game.getId(), game);
 					// Se insertan/actualizan los invocadores
 					for (SummonerStats summonerStats : game.getSummoners().values()) {
 						if (players.containsKey(summonerStats.getSummonerName()))
@@ -64,13 +59,7 @@ public class Parser {
 				line = line.trim();
 				splittedLine = line.split(" = ");
 				
-				if (splittedLine[0].equals("gameId") || splittedLine[0].equals("id"))
-					try {
-						game.setId(Long.parseLong(splittedLine[1]));
-					} catch(NumberFormatException e) {
-						game.setId(-1);
-					}
-				else if (splittedLine[0].equals("gameType"))
+				if (splittedLine[0].equals("gameType"))
 					game.setGameType(ParserUtils.parseGameType(splittedLine[1]));
 				else if (splittedLine[0].equals("difficulty"))
 					game.setDifficulty(splittedLine[1]);
@@ -87,9 +76,9 @@ public class Parser {
 				else if (splittedLine[0].equals("bannedChampionNames"))
 					game.setBannedChampions(ParserUtils.parseBannedChampions(br));
 				else if (splittedLine[0].equals("teamPlayerParticipantStats"))
-					game.setTeam1(ParserUtils.parseTeam(br));
+					game.setTeam1(ParserUtils.parseTeam(br, game.getId()));
 				else if (splittedLine[0].equals("otherTeamPlayerParticipantStats"))
-					game.setTeam2(ParserUtils.parseTeam(br));
+					game.setTeam2(ParserUtils.parseTeam(br, game.getId()));
 			}
 		} catch (IOException e) {e.printStackTrace();}
 		
