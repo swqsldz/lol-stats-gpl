@@ -87,6 +87,13 @@ public class Database {
 			games = (HashMap<Long, Game>) ois.readObject();
 			ois.close();
 		} catch(Exception e) {e.printStackTrace();}
+		
+		/* Se busca el identificador más alto para continuar con los ids de los
+		   juegos desde ahí */
+		long maxId = 0;
+		for (long gameId : games.keySet())
+			maxId = Math.max(maxId, gameId);
+		Game.setNextId(maxId);
 	}
 	
 	public void saveDatabase() {

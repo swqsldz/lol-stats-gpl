@@ -95,6 +95,9 @@ public class Summoner implements Serializable {
 	
 	public int getLevel() {return level;}
 	public void setLevel(int level) {this.level = level;}
+	
+	public HashSet<Long> getGames() {return games;}
+	public void setGames(HashSet<Long> games) {this.games = games;}
 }
 
 class Statistics implements Serializable {

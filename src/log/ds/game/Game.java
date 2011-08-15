@@ -14,6 +14,9 @@ import log.ds.QueueType;
 public class Game implements Serializable {
 	
 	private static final long serialVersionUID = -6540623759565099655L;
+	
+	/** Valor estático para ir asignando un identificador a cada juego creado */
+	private static long nextId = 0;
 
 	/** Identificador del juego */
 	private long id;
@@ -52,7 +55,7 @@ public class Game implements Serializable {
 	HashMap<String, SummonerStats> team2;
 
 	public Game() {
-		id = -1;
+		id = nextId++;
 		difficulty = null;
 		gameLength = -1;
 		bannedChampions = null;
@@ -66,35 +69,6 @@ public class Game implements Serializable {
 		team2 = null;
 	}
 	
-	/** Mezcla la información del juego con otro */
-	public void merge(Game game) {
-		// Si los identificadores de ambos juegos no coinciden se detiene la mezcla
-		if (game == null || getId() != game.getId()) return;
-		
-		if (getDifficulty() == null)
-			setDifficulty(game.getDifficulty());
-		if (getGameLength() == -1)
-			setGameLength(game.getGameLength());
-		if (getBannedChampions() == null || 
-			(game.getBannedChampions() != null &&
-			 getBannedChampions().size() < game.getBannedChampions().size()))
-			setBannedChampions(game.getBannedChampions());
-		if (getCreationTime() == null)
-			setCreationTime(game.getCreationTime());
-		if (getGameType() == null)
-			setGameType(game.getGameType());
-		if (getQueueType() == null)
-			setQueueType(game.getQueueType());
-		if (getName() == null)
-			setName(game.getName());
-		if (getMap() == null)
-			setMap(game.getMap());
-		if (getTeam1() == null)
-			setTeam1(game.getTeam1());
-		if (getTeam2() == null)
-			setTeam2(game.getTeam2());
-	}
-	
 	@Override
 	public String toString() {
 		return "Game [id=" + id + ", difficulty=" + difficulty
@@ -106,8 +80,9 @@ public class Game implements Serializable {
 	}
 	
 	/* Accesoras y modificadoras */
+	public static void setNextId(long newNextId) {nextId = newNextId;}
+	
 	public long getId() {return id;}
-	public void setId(long id) {this.id = id;}
 
 	public String getDifficulty() {return difficulty;}
 	public void setDifficulty(String difficulty) {this.difficulty = difficulty;}

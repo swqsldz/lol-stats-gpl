@@ -36,10 +36,11 @@ public class Sys {
 	
 	public static void main(String[] args) {
 		try {
-			Database.getInstance().resetFiles();
 			Sys system = Sys.getInstance();
 			system.updateGames();
 			system.saveFiles();
+			Database db = Database.getInstance();
+			System.out.println("");
 		} catch (IOException ex) {
 			Logger.getLogger(Sys.class.getName()).log(Level.SEVERE, null, ex);
 			ex.printStackTrace();
@@ -64,7 +65,6 @@ public class Sys {
 		String[] logsList = logs.list(new LogFilter(getParsedFiles()));
 		if (logsList != null)
 			for (String logPath : logsList) {
-				System.out.println(logPath);
 				HashMap<String, Summoner> players = Database.getInstance().getSummoners();
 				HashMap<Long, Game> games = Database.getInstance().getGames();
 				parser.readFile(logsPath + SEPARATOR + logPath, games, players);
@@ -84,6 +84,7 @@ public class Sys {
 		
 		if (found) {
 			loggedSummonerName = username;
+			new LoggedSummoner(username);
 			Options options = Options.getInstance();
 			if (options.getRememberUsername())
 				options.setLastLoggedUsername(username);
@@ -138,10 +139,8 @@ public class Sys {
 			br = new BufferedReader(fr);
 			
 			String line;
-			String lastFile = null;
 			while ((line = br.readLine()) != null) {
 				parsedFiles.add(line);
-				lastFile = line;
 			}
 		} catch(IOException e) {e.printStackTrace();}
 		finally {
@@ -167,7 +166,6 @@ class LogFilter implements FilenameFilter {
 	
 	@Override
 	public boolean accept(File dir, String name) {
-		System.out.println(name);
 		return name.endsWith(".log") && !parsedFiles.contains(name);
 	}
 }

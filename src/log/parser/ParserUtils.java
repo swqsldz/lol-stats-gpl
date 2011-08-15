@@ -94,7 +94,6 @@ public class ParserUtils {
 		Champion[] champions = Champion.values();
 		Champion champion = null;
 		String championNameUC = championName.replace("\"", "").toUpperCase();
-		System.out.println(championName);
 		for (int iChampion = 0; iChampion < champions.length && champion == null; iChampion++) {
 			if (champions[iChampion].toString().equals(championNameUC))
 				champion = champions[iChampion];
@@ -107,7 +106,7 @@ public class ParserUtils {
 		return null;
 	}
 
-	public static HashMap<String, SummonerStats> parseTeam(BufferedReader br) {
+	public static HashMap<String, SummonerStats> parseTeam(BufferedReader br, long gameId) {
 		HashMap<String, SummonerStats> team = new HashMap<String, SummonerStats>();
 		SummonerStats player;
 		int length;
@@ -119,7 +118,7 @@ public class ParserUtils {
 			length = Integer.parseInt(br.readLine().trim().split(" = ")[1]);	// length = x
 			br.readLine();	// source = (Array)#y
 			for (int iPlayer = 0; iPlayer < length; iPlayer++) {
-				player = parsePlayer(br);
+				player = parsePlayer(br, gameId);
 				team.put(player.getSummonerName(), player);
 			}
 		} catch (IOException e) {e.printStackTrace();}
@@ -127,7 +126,7 @@ public class ParserUtils {
 		return team;
 	}
 	
-	private static SummonerStats parsePlayer(BufferedReader br) {
+	private static SummonerStats parsePlayer(BufferedReader br, long gameId) {
 		SummonerStats player = new SummonerStats();
 		try {
 			br.readLine();	// [n] (com.riotgames.platform.gameclient.domain::PlayerParticipantStatsSummary)#m
@@ -136,11 +135,8 @@ public class ParserUtils {
 			player.setBot(Boolean.parseBoolean(br.readLine().trim().split(" = ")[1]));	// botPlayer
 			player.setElo(Integer.parseInt(br.readLine().trim().split(" = ")[1]));	// elo
 			player.setEloChange(Integer.parseInt(br.readLine().trim().split(" = ")[1]));	// eloChange
-			try {
-				player.setGameId(Integer.parseInt(br.readLine().trim().split(" = ")[1]));	// gameId
-			} catch(NumberFormatException e) {
-				player.setGameId(-1);
-			}
+			br.readLine();	// gameId
+			player.setGameId(gameId);
 			br.readLine();	// gameItems
 			br.readLine();	// inChat
 			player.setMe(Boolean.parseBoolean(br.readLine().trim().split(" = ")[1]));	// isMe
